@@ -13,7 +13,7 @@ This project utilizes publicly available medical imaging datasets. You can downl
 ### :brain: Brain Tumor MRI
 - [Adult Glioma (GLI)](https://www.synapse.org/Synapse:syn51156910/wiki/622351)
 - [Meningioma (MEN)](https://www.synapse.org/Synapse:syn51156910/wiki/622353)
-- 
+
 ### :lungs: Lung Tumor CT
 - [NSCLC-Radiomics](https://www.cancerimagingarchive.net/collection/nsclc-radiomics/)
 - [NSCLC-Radiomics-Interobserver1](https://www.cancerimagingarchive.net/collection/nsclc-radiomics-interobserver1/)
