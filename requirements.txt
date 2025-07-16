@@ -1,7 +1,6 @@
 numpy
 SimpleITK
 matplotlib
-TotalSegmentator
 pyradiomics
 pandas
 tqdm
