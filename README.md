@@ -16,7 +16,7 @@ This project utilizes publicly available medical imaging datasets. You can downl
 - [RIDER-LungCT-Seg](https://www.cancerimagingarchive.net/collection/rider-lung-ct/)
 - [NSCLC Radiogenomics](https://www.cancerimagingarchive.net/collection/nsclc-radiogenomics/)
 - [LUNG-PET-CT-Dx](https://www.cancerimagingarchive.net/collection/lung-pet-ct-dx/)
-- 
+  
 ### :brain: Brain Tumor MRI
 - [Adult Glioma (GLI)](https://www.synapse.org/Synapse:syn51156910/wiki/622351)
 - [Meningioma (MEN)](https://www.synapse.org/Synapse:syn51156910/wiki/622353)
