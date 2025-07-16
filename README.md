@@ -22,7 +22,65 @@ This project utilizes publicly available medical imaging datasets. You can downl
 - [LUNG-PET-CT-Dx](https://www.cancerimagingarchive.net/collection/lung-pet-ct-dx/)
 
 
+## Usage
 
+### Installation
+
+To set up your development environment, follow the steps below:
+
+1. **Pull the Docker image:**
+
+    We are using the `pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel` Docker image. You can pull it from Docker Hub by running:
+
+    ```sh
+    docker pull pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel
+    ```
+
+2. **Run the Docker container:**
+
+    Start a container from the pulled image. You can mount your project directory into the container for easy development:
+
+    ```sh
+    docker run --shm-size=192gb --gpus=all -it -v /path/to/your/project/:/workspace --name radiomicsretrieval pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel /bin/bash
+    ```
+
+    Replace `/path/to/your/project` with the actual path to your project directory.
+
+3. **Set up the Python environment:**
+
+    Inside the container, clone this repository and install the required dependencies:
+
+    ```sh
+    git clone https://github.com/nainye/RadiomicsRetrieval.git && cd RadiomicsRetrieval
+    pip install -r requirements.txt
+    ```
+
+### Data Preprocessing
+To preprocess the datasets, run the following notebooks:
+
+- **Lung Tumor CT (NSCLC)**:  
+  [source/preprocessing_NSCLC.ipynb](source/preprocessing_NSCLC.ipynb)
+
+- **Brain Tumor MRI (BraTS)**:  
+  Preprocessing notebook is **under construction** and will be uploaded soon.
+
+### Model Training
+
+  Training code is **under construction** and will be uploaded soon.
+
+## Citation
+If you use this code for your research, please cite our papers.
+
+**BibTeX:**
+```bibtex
+@article{na2025radiomicsretrieval,
+  title={RadiomicsRetrieval: A Customizable Framework for Medical Image Retrieval Using Radiomics Features},
+  author={Na, Inye and Rue, Nejung and Chung, Jiwon and Park, Hyunjin},
+  journal={arXiv preprint arXiv:2507.08546},
+  year={2025}
+}
+
+```
 
 ## Contact
 
