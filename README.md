@@ -66,8 +66,27 @@ To preprocess the datasets, run the following notebooks:
 
 ### Model Training
 
-  Training code is **under construction** and will be uploaded soon.
+- **Lung Tumor CT (NSCLC)**:  
+  1. **Prepare SAM-Med3D checkpoint:**
+  
+     Download the SAM-Med3D checkpoint and place it in the correct location:
+  
+     - 🔗 [Download `sam_med3d_turbo.pth`](https://huggingface.co/blueyo0/SAM-Med3D/blob/main/sam_med3d_turbo.pth)
+     - Move it to:  
+       ```
+       ./source/sam_med3d_turbo.pth
+       ```
+  
+  2. **Run the training script:**
+  
+     ```sh
+     ./scripts/run_train_RadiomicsRetireval_NSCLC_Img+Rad_withAPE.sh
+     ```
+     
+- **Brain Tumor MRI (BraTS)**:  
+  Training code for brain tumor retrieval is under construction and will be uploaded soon.
 
+  
 ## Citation
 If you use this code for your research, please cite our papers.
 
