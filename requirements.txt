@@ -6,3 +6,8 @@ pandas
 tqdm
 scipy
 h5py
+monai
+h5py
+wandb
+loguru
+transformers
