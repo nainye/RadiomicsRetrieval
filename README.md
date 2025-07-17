@@ -68,10 +68,10 @@ To preprocess the datasets, run the following notebooks:
 
 #### Common Setup
 
-Before training on any dataset, you must download and place the SAM-Med3D checkpoint:
+Before training the model, please download the SAM-Med3D checkpoint and place it as follows:
 
   - 🔗 [Download `sam_med3d_turbo.pth`](https://huggingface.co/blueyo0/SAM-Med3D/blob/main/sam_med3d_turbo.pth)
-  - Move it to:
+  - Save it to:
      ```
      ./source/sam_med3d_turbo.pth
      ```
