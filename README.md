@@ -58,33 +58,34 @@ To set up your development environment, follow the steps below:
 ### Data Preprocessing
 To preprocess the datasets, run the following notebooks:
 
-- **Lung Tumor CT (NSCLC)**:  
+- ** :lungs: Lung Tumor CT (NSCLC)**:  
   [source/preprocessing_NSCLC.ipynb](source/preprocessing_NSCLC.ipynb)
 
-- **Brain Tumor MRI (BraTS)**:  
+- ** :brain: Brain Tumor MRI (BraTS)**:  
   Preprocessing notebook is **under construction** and will be uploaded soon.
 
 ### Model Training
 
-- **Lung Tumor CT (NSCLC)**:  
-  1. **Prepare SAM-Med3D checkpoint:**
-  
-     Download the SAM-Med3D checkpoint and place it in the correct location:
-  
-     - 🔗 [Download `sam_med3d_turbo.pth`](https://huggingface.co/blueyo0/SAM-Med3D/blob/main/sam_med3d_turbo.pth)
-     - Move it to:  
-       ```
-       ./source/sam_med3d_turbo.pth
-       ```
-  
-  2. **Run the training script:**
-  
-     ```sh
-     ./scripts/run_train_RadiomicsRetireval_NSCLC_Img+Rad_withAPE.sh
+#### Common Setup
+
+Before training on any dataset, you must download and place the SAM-Med3D checkpoint:
+
+  - 🔗 [Download `sam_med3d_turbo.pth`](https://huggingface.co/blueyo0/SAM-Med3D/blob/main/sam_med3d_turbo.pth)
+  - Move it to:
      ```
+     ./source/sam_med3d_turbo.pth
+     ```
+#### :lungs: Lung Tumor CT (NSCLC)
+
+To train the model on NSCLC CT data, run the following script:
+
+  ```sh
+  ./scripts/run_train_RadiomicsRetireval_NSCLC_Img+Rad_withAPE.sh
+  ```
+
      
-- **Brain Tumor MRI (BraTS)**:  
-  Training code for brain tumor retrieval is under construction and will be uploaded soon.
+#### :brain: Brain Tumor MRI (BraTS)  
+Training code for brain tumor retrieval is under construction and will be uploaded soon.
 
   
 ## Citation
