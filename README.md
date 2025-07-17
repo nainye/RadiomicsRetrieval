@@ -62,7 +62,7 @@ To preprocess the datasets, run the following notebooks:
   [source/preprocessing_NSCLC.ipynb](source/preprocessing_NSCLC.ipynb)
 
 #### :brain: Brain Tumor MRI (BraTS)    
-  Preprocessing notebook is **under construction** and will be uploaded soon.
+  Preprocessing notebook is under construction and will be uploaded soon.
 
 ### Model Training
 
