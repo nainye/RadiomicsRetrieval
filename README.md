@@ -58,10 +58,10 @@ To set up your development environment, follow the steps below:
 ### Data Preprocessing
 To preprocess the datasets, run the following notebooks:
 
-- ** :lungs: Lung Tumor CT (NSCLC)**:  
+#### :lungs: Lung Tumor CT (NSCLC)
   [source/preprocessing_NSCLC.ipynb](source/preprocessing_NSCLC.ipynb)
 
-- ** :brain: Brain Tumor MRI (BraTS)**:  
+#### :brain: Brain Tumor MRI (BraTS)    
   Preprocessing notebook is **under construction** and will be uploaded soon.
 
 ### Model Training
