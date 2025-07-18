@@ -99,7 +99,6 @@ If you use this code for your research, please cite our papers.
   journal={arXiv preprint arXiv:2507.08546},
   year={2025}
 }
-
 ```
 
 ## Contact
