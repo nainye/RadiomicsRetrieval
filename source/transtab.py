@@ -1322,9 +1322,9 @@ class TransTabForRadiomics(TransTabModel):
             self.input_encoder.feature_extractor.save(ckpt_dir)
         # save model parameters
         model_params = {
-            'categorical_columns': self.categorical_columns,
-            'numerical_columns': self.numerical_columns,
-            'binary_columns': self.binary_columns,
+            'categorical_columns': self.input_encoder.feature_extractor.categorical_columns,
+            'numerical_columns': self.input_encoder.feature_extractor.numerical_columns,
+            'binary_columns': self.input_encoder.feature_extractor.binary_columns,
             'num_class': self.num_class,
             'hidden_dim': self.encoder.hidden_dim,
             'num_layer': self.encoder.num_layer,
