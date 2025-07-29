@@ -1331,7 +1331,7 @@ def build_RadiomicsRetireval(
         # pixel_std=[58.395, 57.12, 57.375],
     )
     if (pretrained):
-        checkpoint = torch.load(checkpoint_path, weights_only=True)
+        checkpoint = torch.load(checkpoint_path, weights_only=True, map_location="cpu")
 
         if num_multimask_outputs != 3:
             checkpoint["mask_decoder.mask_tokens.weight"] = checkpoint["mask_decoder.mask_tokens.weight"][:num_multimask_outputs+1, :]
