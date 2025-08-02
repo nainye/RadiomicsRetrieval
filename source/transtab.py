@@ -1288,7 +1288,6 @@ class TransTabForRadiomics(TransTabModel):
         # Load model weights (state_dict)
         model_name = os.path.join(ckpt_dir, constants.WEIGHTS_NAME)
         state_dict = torch.load(model_name, map_location='cpu')
-        state_dict.pop('projection_head.dense.weight', None)
         missing_keys, unexpected_keys = self.load_state_dict(state_dict, strict=False)
         logger.info(f'missing keys: {missing_keys}')
         logger.info(f'unexpected keys: {unexpected_keys}')
