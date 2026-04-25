@@ -87,17 +87,27 @@ To train the model on NSCLC CT data, run the following script:
 #### :brain: Brain Tumor MRI (BraTS)  
 Training code for brain tumor retrieval is under construction and will be uploaded soon.
 
+### Released Checkpoints
+
+#### :lungs: Lung Tumor CT (NSCLC)
+  - 🔗 [Download checkpoint](https://drive.google.com/file/d/16c-LM23X0J3vMcnxGMgmbmefxS9mfKKQ/view?usp=sharing)
+
+#### :brain: Brain Tumor MRI (BraTS)
+  Coming soon.
+
   
 ## Citation
 If you use this code for your research, please cite our papers.
 
 **BibTeX:**
 ```bibtex
-@article{na2025radiomicsretrieval,
+@inproceedings{na2025radiomicsretrieval,
   title={RadiomicsRetrieval: A Customizable Framework for Medical Image Retrieval Using Radiomics Features},
   author={Na, Inye and Rue, Nejung and Chung, Jiwon and Park, Hyunjin},
-  journal={arXiv preprint arXiv:2507.08546},
-  year={2025}
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={556--566},
+  year={2025},
+  organization={Springer}
 }
 ```
 
