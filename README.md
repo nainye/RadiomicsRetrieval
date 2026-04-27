@@ -95,7 +95,68 @@ Training code for brain tumor retrieval is under construction and will be upload
 #### :brain: Brain Tumor MRI (BraTS)
   - 🔗 [Download checkpoint](https://drive.google.com/file/d/1VRkXb5XHzYo5OmwgHDc-RooMxQET8-Km/view?usp=sharing)
 
-  
+
+### Retrieval
+
+After training (or downloading a checkpoint), build a sample-embedding DB and query it.
+
+#### :lungs: Lung Tumor CT (NSCLC)
+
+##### 1. Build the embedding DB
+
+```sh
+./scripts/run_build_db.sh
+```
+
+Runs every sample in `data/NSCLC/train.jsonl` through the image encoder and writes the DB to `results/checkpoint-lung/db/`:
+
+```
+img_embeddings/<id>.npy           # image embedding per sample
+radiomics_normalized.json         # 72 normalized radiomics features
+feature_names.json
+gt_labels.json
+radiomics_features_min_max.json
+skipped.json
+```
+
+Samples without a matching image / seg / APE file are skipped, so you can re-run the script later to fill in the gaps. Edit [`scripts/run_build_db.sh`](scripts/run_build_db.sh) to change the jsonl, data root, checkpoint, or GPU.
+
+##### 2. Query the DB
+
+```sh
+./scripts/run_retrieve.sh
+```
+
+Set `MODE` to choose the search space:
+
+| Mode | Search space |
+|---|---|
+| `img` | Image embedding |
+| `rad` | All 72 radiomics features |
+| `shape` | 14 Shape features |
+| `firstorder` | 18 First-order features |
+| `texture` | GLCM ∪ GLSZM (40 features) |
+| `glcm` / `glszm` | Single texture family |
+| `feature` | One feature, set by `FEATURE_NAME` |
+
+Two ways to specify the query:
+
+- Set `QUERY_ID=LUNG1-001_1` to use a sample already in the DB.
+- Leave `QUERY_ID` blank and set `IMAGE`, `SEG`, and (for `MODE=img`) `APE` to use an external sample. `QUERY_LABEL` is optional.
+
+Each result shows the embedding similarity (`emb`), raw 72-feature radiomics cosine (`raw`), and label match:
+
+```
+[result] mode=shape, query_label=ADC, top-5:
+   1. LUNG1-042_1             emb=+0.8731  raw=+0.6402  label=ADC  ✓
+   2. LUNG1-114_1             emb=+0.8520  raw=+0.5810  label=SCC
+   3. LUNG1-077_2             emb=+0.8431  raw=+0.7152  label=ADC  ✓
+   ...
+```
+
+For non-`img` modes, the DB is forwarded through transtab once and cached at `<db>/_cache_<mode>.npy`.
+
+
 ## Citation
 If you use this code for your research, please cite our papers.
 
