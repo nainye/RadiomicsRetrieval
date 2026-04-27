@@ -144,13 +144,13 @@ Two ways to specify the query:
 - Set `QUERY_ID=LUNG1-001_1` to use a sample already in the DB.
 - Leave `QUERY_ID` blank and set `IMAGE`, `SEG`, and (for `MODE=img`) `APE` to use an external sample. `QUERY_LABEL` is optional.
 
-Each result shows the embedding similarity (`emb`), raw 72-feature radiomics cosine (`raw`), and label match:
+Each result shows the embedding similarity (`emb`), the cosine on the 72 min-max-normalized radiomics features (`rad_feature`), and label match:
 
 ```
 [result] mode=shape, query_label=ADC, top-5:
-   1. LUNG1-042_1             emb=+0.8731  raw=+0.6402  label=ADC  ✓
-   2. LUNG1-114_1             emb=+0.8520  raw=+0.5810  label=SCC
-   3. LUNG1-077_2             emb=+0.8431  raw=+0.7152  label=ADC  ✓
+   1. LUNG1-042_1             emb=+0.8731  rad_feature=+0.6402  label=ADC  ✓
+   2. LUNG1-114_1             emb=+0.8520  rad_feature=+0.5810  label=SCC
+   3. LUNG1-077_2             emb=+0.8431  rad_feature=+0.7152  label=ADC  ✓
    ...
 ```
 
