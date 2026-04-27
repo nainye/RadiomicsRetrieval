@@ -241,7 +241,7 @@ def main():
     p.add_argument('--query-label', default=None, choices=['SCC', 'LCC', 'ADC', 'NOS', 'NaN'],
                    help="Optional ground-truth label for an external query (for label_match column).")
     p.add_argument('--no-aux', action='store_true',
-                   help="Skip auxiliary raw-radiomics-cosine and label-match columns.")
+                   help="Skip auxiliary rad-feature-cosine and label-match columns.")
     args = p.parse_args()
 
     torch.manual_seed(args.seed)
@@ -256,7 +256,7 @@ def main():
     gt_labels_path = args.gt_labels_json or os.path.join(args.db_dir, 'gt_labels.json')
     gt_labels = json.load(open(gt_labels_path)) if os.path.exists(gt_labels_path) else None
 
-    # Tracked for the auxiliary raw-radiomics-cosine score; set whenever we run PyRadiomics.
+    # Tracked for the auxiliary rad-feature-cosine score; set whenever we run PyRadiomics.
     query_full_radiomics = None
 
     if args.mode == 'img':
@@ -325,7 +325,7 @@ def main():
             query = multi[:, 0, :].cpu().numpy().squeeze(0)
         order, scores = cosine_topk(query, embs, args.top_k, exclude_idx)
 
-    # === Auxiliary scores: raw 72-feature radiomics cosine + label match ===
+    # === Auxiliary scores: 72-feature radiomics cosine (min-max normalized) + label match ===
     raw_sims_full = None
     query_label_resolved = None
     if not args.no_aux:
@@ -335,7 +335,7 @@ def main():
             rad_by_id = {x: arr_rad[i] for i, x in enumerate(ids_rad)}
             missing = [x for x in ids if x not in rad_by_id]
             if missing:
-                print(f"[warn] {len(missing)} ids missing from radiomics_normalized.json; raw_sim will be NaN for them")
+                print(f"[warn] {len(missing)} ids missing from radiomics_normalized.json; rad_feature will be NaN for them")
             arr_aligned = np.array(
                 [rad_by_id.get(x, np.full(len(rad_names), np.nan)) for x in ids],
                 dtype=np.float32,
@@ -359,7 +359,7 @@ def main():
             db_n = arr_aligned / (db_norms + 1e-12)
             raw_sims_full = db_n @ q_n  # (N,) — NaN rows propagate
         else:
-            print("[warn] query radiomics unavailable; raw_sim column will be omitted")
+            print("[warn] query radiomics unavailable; rad_feature column will be omitted")
 
         # Resolve query label.
         if args.query_label:
@@ -374,7 +374,7 @@ def main():
         e = {'rank': rank, 'id': rid, 'embedding_sim': float(s)}
         if raw_sims_full is not None:
             v = raw_sims_full[i]
-            e['raw_radiomics_sim'] = None if np.isnan(v) else float(v)
+            e['rad_feature_sim'] = None if np.isnan(v) else float(v)
         if gt_labels and rid in gt_labels:
             e['label'] = gt_labels[rid]
             if query_label_resolved is not None:
@@ -390,10 +390,10 @@ def main():
     print(header)
     for r in results:
         line = f"  {r['rank']:2d}. {r['id']:<22s}  emb={r['embedding_sim']:+.4f}"
-        if 'raw_radiomics_sim' in r and r['raw_radiomics_sim'] is not None:
-            line += f"  raw={r['raw_radiomics_sim']:+.4f}"
-        elif 'raw_radiomics_sim' in r:
-            line += f"  raw=    n/a"
+        if 'rad_feature_sim' in r and r['rad_feature_sim'] is not None:
+            line += f"  rad_feature={r['rad_feature_sim']:+.4f}"
+        elif 'rad_feature_sim' in r:
+            line += f"  rad_feature=    n/a"
         if 'label' in r:
             line += f"  label={str(r['label']):<4s}"
             if 'label_match' in r:
