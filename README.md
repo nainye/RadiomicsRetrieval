@@ -93,7 +93,7 @@ Training code for brain tumor retrieval is under construction and will be upload
   - 🔗 [Download checkpoint](https://drive.google.com/file/d/16c-LM23X0J3vMcnxGMgmbmefxS9mfKKQ/view?usp=sharing)
 
 #### :brain: Brain Tumor MRI (BraTS)
-  Coming soon.
+  - 🔗 [Download checkpoint](https://drive.google.com/file/d/1VRkXb5XHzYo5OmwgHDc-RooMxQET8-Km/view?usp=sharing)
 
   
 ## Citation
